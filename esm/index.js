@@ -1,14 +1,14 @@
 import {promisify} from 'node:util';
 import path from 'node:path';
 import process from 'node:process';
-import {globby, globbySync} from 'globby';
+import {globby, globbySync} from '@esm2cjs/globby';
 import isGlob from 'is-glob';
-import slash from 'slash';
+import slash from '@esm2cjs/slash';
 import gracefulFs from 'graceful-fs';
-import isPathCwd from 'is-path-cwd';
-import isPathInside from 'is-path-inside';
+import isPathCwd from '@esm2cjs/is-path-cwd';
+import isPathInside from '@esm2cjs/is-path-inside';
 import rimraf from 'rimraf';
-import pMap from 'p-map';
+import pMap from '@esm2cjs/p-map';
 
 const rimrafP = promisify(rimraf);
 

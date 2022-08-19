@@ -1,4 +1,4 @@
-import {Options as GlobbyOptions} from 'globby';
+import {Options as GlobbyOptions} from '@esm2cjs/globby';
 
 export interface ProgressData {
 	/**

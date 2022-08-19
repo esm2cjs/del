@@ -5,7 +5,7 @@ import process from 'node:process';
 import test from 'ava';
 import {temporaryDirectory} from 'tempy';
 import makeDir from 'make-dir';
-import {deleteAsync, deleteSync} from './index.js';
+import {deleteAsync, deleteSync} from './esm/index.js';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const processCwd = process.cwd();

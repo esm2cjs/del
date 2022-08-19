@@ -1,18 +1,22 @@
 {
-	"name": "del",
+	"name": "@esm2cjs/del",
 	"version": "7.0.0",
-	"description": "Delete files and directories",
+	"description": "Delete files and directories. This is a fork of sindresorhus/del, but with CommonJS support.",
 	"license": "MIT",
-	"repository": "sindresorhus/del",
-	"funding": "https://github.com/sponsors/sindresorhus",
+	"repository": "esm2cjs/del",
+	"funding": "https://github.com/sponsors/AlCalzone",
 	"author": {
-		"name": "Sindre Sorhus",
-		"email": "sindresorhus@gmail.com",
-		"url": "https://sindresorhus.com"
+		"name": "Dominic Griesel",
+		"email": "d.griesel@gmx.net"
 	},
-	"type": "module",
-	"exports": "./index.js",
-	"types": "./index.d.ts",
+	"exports": {
+		".": {
+			"import": "./esm/index.js",
+			"require": "./cjs/index.js"
+		},
+		"./package.json": "./package.json"
+	},
+	"types": "esm/index.d.ts",
 	"engines": {
 		"node": ">=14.16"
 	},
@@ -21,8 +25,8 @@
 		"bench": "node benchmark.js"
 	},
 	"files": [
-		"index.js",
-		"index.d.ts"
+		"cjs/",
+		"esm/"
 	],
 	"keywords": [
 		"delete",
@@ -49,14 +53,14 @@
 		"filesystem"
 	],
 	"dependencies": {
-		"globby": "^13.1.2",
+		"@esm2cjs/globby": "^13.1.2",
+		"@esm2cjs/is-path-cwd": "^3.0.0",
+		"@esm2cjs/is-path-inside": "^4.0.0",
+		"@esm2cjs/p-map": "^5.5.0",
+		"@esm2cjs/slash": "^4.0.0",
 		"graceful-fs": "^4.2.10",
 		"is-glob": "^4.0.3",
-		"is-path-cwd": "^3.0.0",
-		"is-path-inside": "^4.0.0",
-		"p-map": "^5.5.0",
-		"rimraf": "^3.0.2",
-		"slash": "^4.0.0"
+		"rimraf": "^3.0.2"
 	},
 	"devDependencies": {
 		"ava": "^4.3.1",
@@ -69,5 +73,30 @@
 	"ava": {
 		"serial": true,
 		"workerThreads": false
+	},
+	"publishConfig": {
+		"access": "public"
+	},
+	"main": "cjs/index.js",
+	"module": "esm/index.js",
+	"typesVersions": {
+		"*": {
+			"esm/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"cjs/index.d.ts": [
+				"esm/index.d.ts"
+			],
+			"*": [
+				"esm/*"
+			]
+		}
+	},
+	"xo": {
+		"ignores": [
+			"cjs",
+			"**/*.test-d.ts",
+			"**/*.d.ts"
+		]
 	}
 }
